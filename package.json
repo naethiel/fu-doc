@@ -1,5 +1,5 @@
 {
-  "name": "mdns",
+  "name": "jsfu",
   "bin": "./dist/index.js",
   "version": "0.0.1",
   "description": "",
