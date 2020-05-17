@@ -1,16 +1,34 @@
 {
-  "name": "jsfu",
-  "bin": "./dist/index.js",
+  "name": "fu-doc",
+  "bin": {
+    "fu": "./dist/index.js"
+  },
   "version": "0.0.1",
-  "description": "",
-  "main": "./dist/index.js",
-  "scripts": {
-    "tsc": "tsc",
-    "start": "ts-node ./src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "description": "Command-line mdn docs search tool",
+  "keywords": [
+    "documentation",
+    "mdn",
+    "cli"
+  ],
+  "homepage": "https://github.com/naethiel/fu-doc",
+  "bugs": {
+    "url": "https://github.com/naethiel/fu-doc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:naethiel/fu-doc.git"
   },
   "author": "Nicolas Missika",
-  "license": "ISC",
+  "license": "MIT",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "prepare": "tsc",
+    "tsc": "tsc",
+    "start": "ts-node ./src/index.ts",
+    "preversion": "tsc",
+    "postversion": "git push && git push --tags"
+  },
   "dependencies": {
     "chalk": "^4.0.0",
     "inquirer": "^7.1.0",
@@ -19,11 +37,16 @@
   },
   "devDependencies": {
     "@types/inquirer": "^6.5.0",
-    "@types/jsdom": "^16.2.1",
     "@types/node": "^13.13.5",
     "@types/node-fetch": "^2.5.7",
     "@types/turndown": "^5.0.0",
     "ts-node": "^8.10.1",
     "typescript": "^3.8.3"
+  },
+  "files": [
+    "dist/**/*"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org"
   }
 }
