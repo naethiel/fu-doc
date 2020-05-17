@@ -31,12 +31,19 @@
   },
   "dependencies": {
     "chalk": "^4.0.0",
+    "highlight.js": "^10.0.3",
     "inquirer": "^7.1.0",
+    "jsdom": "^16.2.2",
+    "lowlight": "^1.13.1",
+    "minimist": "^1.2.5",
     "node-fetch": "^2.6.0",
     "turndown": "^6.0.0"
   },
   "devDependencies": {
+    "@types/highlight.js": "^9.12.4",
     "@types/inquirer": "^6.5.0",
+    "@types/jsdom": "^16.2.3",
+    "@types/minimist": "^1.2.0",
     "@types/node": "^13.13.5",
     "@types/node-fetch": "^2.5.7",
     "@types/turndown": "^5.0.0",
