@@ -4,8 +4,6 @@ import { choosePageSection, choosePage } from "./questions";
 import { printSummary, printPageSection } from "./print";
 import parseArgs from "minimist";
 
-
-
 async function run() {
   const args = parseArgs(process.argv.slice(2));
 
@@ -30,7 +28,7 @@ async function run() {
     if (!chosenPage) {
       throw new Error("chosen page not in results");
     }
-    
+
     page = await getPage(chosenPage.slug);
   }
 
