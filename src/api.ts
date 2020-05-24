@@ -37,9 +37,9 @@ export function getPageSection(
   ).then((r) => r.text());
 }
 
-export function getSearchResults(query: string): Promise<searchResults> {
+export function getSearchResults(query: string, pagination = 20): Promise<searchResults> {
   return fetch(
-    `${config.BASE_URL}/${config.LOCALE}/search.json?highlight=false&per_page=20&q=${query}`
+    `${config.BASE_URL}/${config.LOCALE}/search.json?highlight=false&per_page=${pagination}&q=${query}`
   )
     .then((r) => r.json())
     .then((r: { documents: searchResults }) => r.documents);

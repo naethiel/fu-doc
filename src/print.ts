@@ -1,6 +1,7 @@
 import TurndownService from "turndown";
 import chalk from "chalk";
 import { page, config } from "./api";
+import { highlight } from "./emphasize";
 
 export const styles = {
   heading: chalk.bold.cyanBright,
@@ -39,6 +40,14 @@ const markdown = new TurndownService()
       s += " " + content + "\n";
 
       return styles.heading(s);
+    },
+  })
+  .addRule("code-color", {
+    filter: ["pre"],
+    replacement: function (_content, node, options): string {
+      const text = node.textContent ?? "";
+      return highlight(text);
+      
     },
   });
 

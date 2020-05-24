@@ -1,23 +1,36 @@
 #!/usr/bin/env node
-import { getSearchResults, getPage, getPageSection } from "./api";
+import { getSearchResults, getPage, getPageSection, page } from "./api";
 import { choosePageSection, choosePage } from "./questions";
 import { printSummary, printPageSection } from "./print";
+import parseArgs from "minimist";
 
 async function run() {
-  const query = process.argv.slice(2).join(" ");
-  if (!query) {
+  const args = parseArgs(process.argv.slice(2));
+
+  const query = args._.join(" ");
+  const fastSearch: string = args.f;
+
+  if (!query && !fastSearch) {
     throw new Error("No search keyword");
   }
 
-  const results = await getSearchResults(query);
+  let page: page;
 
-  const chosenPage = await choosePage(results, query);
+  if (fastSearch) {
+    const [result] = await getSearchResults(fastSearch, 1);
 
-  if (!chosenPage) {
-    throw new Error("chosen page not in results");
+    page = await getPage(result.slug);
+  } else {
+    const results = await getSearchResults(query);
+
+    const chosenPage = await choosePage(results, query);
+
+    if (!chosenPage) {
+      throw new Error("chosen page not in results");
+    }
+
+    page = await getPage(chosenPage.slug);
   }
-
-  const page = await getPage(chosenPage.slug);
 
   printSummary(page);
 
