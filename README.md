@@ -20,6 +20,8 @@ It can output full MDN pages as markdown, but it is mostly useful to get a quick
 
 `$ fu <query>`. 
 
+If you know what you are searching for and want it to be faster, you can use the *fast-search* flag: `$ fu -f array.map` to auto-return the first search result
+
 ## Example
 
 Anything relative to JS, HTML, CSS:
